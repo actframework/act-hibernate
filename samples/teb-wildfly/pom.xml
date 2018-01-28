@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>demo.hibenrate</groupId>
+	<artifactId>teb-wildfly</artifactId>
+	<version>1.0.0</version>
+
+	<parent>
+		<groupId>org.actframework</groupId>
+		<artifactId>act-starter-parent</artifactId>
+		<version>1.6.1.1</version>
+	</parent>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<database.host>localhost</database.host>
+		<act.version>1.7.0-SNAPSHOT</act.version>
+		<act.jsr330.version>1.0.0-SNAPSHOT</act.jsr330.version>
+		<act.hibernate.version>1.0.0-SNAPSHOT</act.hibernate.version>
+		<mysql.version>5.1.44</mysql.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.actframework</groupId>
+			<artifactId>act</artifactId>
+			<version>1.7.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.actframework</groupId>
+			<artifactId>act-jax-rs</artifactId>
+			<version>${act.jsr330.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.actframework</groupId>
+			<artifactId>act-hibernate</artifactId>
+			<version>${act.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+	</dependencies>
+
+</project>
