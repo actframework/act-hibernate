@@ -24,10 +24,6 @@ import act.Act;
 import act.inject.util.LoadConfig;
 import act.util.LogSupport;
 import org.hibernate.cfg.AvailableSettings;
-import org.hibernate.jpa.boot.internal.ParsedPersistenceXmlDescriptor;
-import org.hibernate.jpa.boot.internal.PersistenceXmlParser;
-import org.hibernate.jpa.boot.spi.Bootstrap;
-import org.hibernate.jpa.boot.spi.EntityManagerFactoryBuilder;
 import org.osgl.inject.annotation.Configuration;
 import org.osgl.util.C;
 import org.osgl.util.E;
@@ -39,7 +35,6 @@ import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.spi.PersistenceUnitTransactionType;
 
 @Versioned
 public class HibernateBootstrap extends LogSupport {
@@ -69,18 +64,19 @@ public class HibernateBootstrap extends LogSupport {
     }
 
     private EntityManagerFactory createSessionFactory() {
-        E.invalidConfigurationIf(null == url1 && null == url2, "persistence.xml not found");
-        URL url = null != url1 ? url1 : url2;
-        Map<String,ParsedPersistenceXmlDescriptor> map = PersistenceXmlParser.parse(url, PersistenceUnitTransactionType.JTA);
-        ParsedPersistenceXmlDescriptor descriptor = map.get(persistenceUnitName);
-        E.invalidConfigurationIf(null == descriptor, "cannot locate persistent configuration for " + persistenceUnitName);
-        EntityManagerFactoryBuilder builder = Bootstrap.getEntityManagerFactoryBuilder(descriptor, integration());
-        return builder.build();
+        throw E.unsupport("Hibernate 5.1 not supported");
+//        E.invalidConfigurationIf(null == url1 && null == url2, "persistence.xml not found");
+//        URL url = null != url1 ? url1 : url2;
+//        Map<String, ParsedPersistenceXmlDescriptor> map = PersistenceXmlParser.parse(url, PersistenceUnitTransactionType.JTA);
+//        ParsedPersistenceXmlDescriptor descriptor = map.get(persistenceUnitName);
+//        E.invalidConfigurationIf(null == descriptor, "cannot locate persistent configuration for " + persistenceUnitName);
+//        EntityManagerFactoryBuilder builder = Bootstrap.getEntityManagerFactoryBuilder(descriptor, integration());
+//        return builder.build();
     }
 
     private Map integration() {
         List<?> classLoaders = C.list(Act.app().classLoader());
-        return C.map(AvailableSettings.CLASSLOADERS, classLoaders);
+        return C.Map(AvailableSettings.CLASSLOADERS, classLoaders);
     }
 
 }
