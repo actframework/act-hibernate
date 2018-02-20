@@ -20,7 +20,7 @@
 
   <artifactId>act-hibernate</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.0.1</version>
 
   <name>ACT Hibernate</name>
   <description>Provides SQL database access through Hibernate library</description>
