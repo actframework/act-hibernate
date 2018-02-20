@@ -23,10 +23,16 @@ package act.db.hibernate;
 import act.app.App;
 import act.db.DbService;
 import act.db.jpa.JPAPlugin;
+import osgl.version.Version;
+import osgl.version.Versioned;
 
 import java.util.Map;
 
+@Versioned
 public class HibernatePlugin extends JPAPlugin {
+
+    public static final Version VERSION = Version.of(HibernatePlugin.class);
+
     @Override
     public DbService initDbService(String id, App app, Map<String, String> conf) {
         return new HibernateService(id, app, conf);
