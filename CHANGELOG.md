@@ -1,9 +1,8 @@
 # act-hibernate CHANGE LOG
 
-**1.1.0** 25/Feb/2018
-
-* update to act-1.7.3
-* update to act-jpa-common-1.1.0
+**1.2.1** 11/Mar/2018
+* update to act-1.8.1
+* update to act-jpa-common-1.2.1
 
 **1.2.0** 3/Mar/2018 - support timestamp auditing
 
