@@ -1,7 +1,7 @@
 # act-hibernate CHANGE LOG
 
-**1.2.4**
-* update act to 1.8.8-RC4
+**1.2.4** 19/May/2018
+* update act to 1.8.8-RC5
 * update act-jpa-common to 1.2.4
 * update hibernate to 5.1.14.Final
 

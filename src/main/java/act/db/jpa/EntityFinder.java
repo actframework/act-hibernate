@@ -36,7 +36,7 @@ public final class EntityFinder {
 
     @Inject
     public EntityFinder(EntityClassRepository repo) {
-        this.repo = $.notNull(repo);
+        this.repo = $.requireNotNull(repo);
     }
 
     @AnnotatedClassFinder(Entity.class)
