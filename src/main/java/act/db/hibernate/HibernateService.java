@@ -48,7 +48,7 @@ public class HibernateService extends JPAService {
     }
 
     @Override
-    protected Properties processProperties(Properties properties, DataSourceConfig dataSourceConfig) {
+    protected Properties processProperties(Properties properties, DataSourceConfig dataSourceConfig, boolean useExternalDataSource) {
         properties.put("javax.persistence.provider", "org.hibernate.ejb.HibernatePersistence");
         properties.put(LOADED_CLASSES, C.list(entityClasses()));
         properties.put("hibernate.dialect", HibernatePlugin.getDefaultDialect(config.rawConf, config.dataSourceConfig.driver));
@@ -63,7 +63,7 @@ public class HibernateService extends JPAService {
         // Hibernate doesn't come up with a decent connection pool
         // thus we don't bother with translating dataSourceConfig settings
         // into hibernate properties
-        return super.processProperties(properties, dataSourceConfig);
+        return super.processProperties(properties, dataSourceConfig, useExternalDataSource);
     }
 
     @Override
