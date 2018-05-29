@@ -26,10 +26,12 @@ import static org.hibernate.jpa.AvailableSettings.LOADED_CLASSES;
 import act.Act;
 import act.app.App;
 import act.db.jpa.JPAService;
+import act.db.sql.DataSourceConfig;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl;
 import org.hibernate.jpa.boot.internal.PersistenceUnitInfoDescriptor;
 import org.osgl.util.C;
+import org.osgl.util.E;
 import org.rythmengine.utils.S;
 
 import java.util.Map;
@@ -37,6 +39,7 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.spi.PersistenceProvider;
 import javax.persistence.spi.PersistenceUnitInfo;
+import javax.sql.DataSource;
 
 public class HibernateService extends JPAService {
 
@@ -45,7 +48,7 @@ public class HibernateService extends JPAService {
     }
 
     @Override
-    protected Properties processProperties(Properties properties) {
+    protected Properties processProperties(Properties properties, DataSourceConfig dataSourceConfig) {
         properties.put("javax.persistence.provider", "org.hibernate.ejb.HibernatePersistence");
         properties.put(LOADED_CLASSES, C.list(entityClasses()));
         properties.put("hibernate.dialect", HibernatePlugin.getDefaultDialect(config.rawConf, config.dataSourceConfig.driver));
@@ -56,12 +59,22 @@ public class HibernateService extends JPAService {
         if (S.ne(CONF_DDL_NONE, s)) {
             properties.setProperty("hibernate.hbm2ddl.auto", s);
         }
-        return super.processProperties(properties);
+        // According to https://stackoverflow.com/questions/4880577
+        // Hibernate doesn't come up with a decent connection pool
+        // thus we don't bother with translating dataSourceConfig settings
+        // into hibernate properties
+        return super.processProperties(properties, dataSourceConfig);
     }
 
     @Override
     protected Class<? extends PersistenceProvider> persistenceProviderClass() {
         return HibernatePersistenceProvider.class;
+    }
+
+    @Override
+    protected void dataSourceProvided(DataSource dataSource, DataSourceConfig dataSourceConfig, boolean readonly) {
+        E.unsupportedIf(null == dataSource, "Hibernate require external data source provider");
+        super.dataSourceProvided(dataSource, dataSourceConfig, readonly);
     }
 
     @Override
