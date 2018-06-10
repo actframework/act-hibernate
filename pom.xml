@@ -35,12 +35,12 @@
   <parent>
     <groupId>org.actframework</groupId>
     <artifactId>parent</artifactId>
-    <version>1.8.8-RC8</version>
+    <version>1.8.8-RC9</version>
   </parent>
 
   <properties>
     <scm.url>git@github.com:actframework/act-hibernate.git</scm.url>
-    <act-jpa-common.version>1.5.0-SNAPSHOT</act-jpa-common.version>
+    <act-jpa-common.version>1.5.0</act-jpa-common.version>
     <hibernate.version>5.1.14.Final</hibernate.version>
   </properties>
 
