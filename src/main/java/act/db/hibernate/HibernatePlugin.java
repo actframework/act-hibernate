@@ -60,8 +60,8 @@ public class HibernatePlugin extends JPAPlugin {
             return "org.hibernate.dialect.Oracle10gDialect";
         } else if ("com.sybase.jdbc2.jdbc.SybDriver".equals(driver)) {
             return "org.hibernate.dialect.SybaseAnywhereDialect";
-        } else if ("com.microsoft.jdbc.sqlserver.SQLServerDriver".equals(driver)) {
-            return "org.hibernate.dialect.SQLServerDialect";
+        } else if ("com.microsoft.sqlserver.jdbc.SQLServerDriver".equals(driver)) {
+            return "org.hibernate.dialect.SQLServer2005Dialect";
         } else if ("com.sap.dbtech.jdbc.DriverSapDB".equals(driver)) {
             return "org.hibernate.dialect.SAPDBDialect";
         } else if ("com.informix.jdbc.IfxDriver".equals(driver)) {
