@@ -1,5 +1,9 @@
 # act-hibernate CHANGE LOG
 
+**1.5.5** 24/Dec/2018
+* update to act-1.8.17
+* update to act-jpa-common-1.5.5
+
 **1.5.4** 09/Dec/2018
 * update to act-1.8.16
 * update to act-jpa-common-1.5.4
