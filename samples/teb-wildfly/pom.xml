@@ -18,7 +18,7 @@
 		<act.version>1.7.0-SNAPSHOT</act.version>
 		<act.jsr330.version>1.0.0-SNAPSHOT</act.jsr330.version>
 		<act.hibernate.version>1.0.0-SNAPSHOT</act.hibernate.version>
-		<mysql.version>5.1.44</mysql.version>
+		<mysql.version>8.0.28</mysql.version>
 	</properties>
 
 	<dependencies>
